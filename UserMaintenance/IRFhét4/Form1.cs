@@ -17,20 +17,21 @@ namespace IRFhét4
         RealEstateEntities1 context = new RealEstateEntities1();
         List<Flat> Flats;
 
+        Excel.Application xlApp;
+        Excel.Workbook xlWB;
+        Excel.Worksheet xlSheet;
+
         public Form1()
         {
             InitializeComponent();
             LoadData();
+            CreateExcel();
         }
 
         private void LoadData()
         {
             Flats = context.Flats.ToList();
         }
-
-        Excel.Application xlApp;
-        Excel.Workbook xlWB;
-        Excel.Worksheet xlSheet;
 
         private void CreateTable()
         {
@@ -62,7 +63,7 @@ namespace IRFhét4
                 values[counter, 5] = f.NumberOfRooms;
                 values[counter, 6] = f.FloorArea;
                 values[counter, 7] = f.Price;
-                values[counter, 8] = "=" +GetCell(counter+2, 8)+ "*1000000"+ GetCell(counter+2,7);
+                values[counter, 8] = "=" +GetCell(counter+2, 8)+ "*1000000/"+ GetCell(counter+2,7);
                 counter++;
             }
 
