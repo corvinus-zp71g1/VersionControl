@@ -33,6 +33,11 @@ namespace IrfHét8
             this.mainPanel = new System.Windows.Forms.Panel();
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblNext = new System.Windows.Forms.Label();
+            this.btnColor = new System.Windows.Forms.Button();
+            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -40,6 +45,10 @@ namespace IrfHét8
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.Controls.Add(this.btnColor);
+            this.mainPanel.Controls.Add(this.lblNext);
+            this.mainPanel.Controls.Add(this.button2);
+            this.mainPanel.Controls.Add(this.button1);
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(799, 452);
@@ -47,13 +56,55 @@ namespace IrfHét8
             // 
             // createTimer
             // 
+            this.createTimer.Enabled = true;
             this.createTimer.Interval = 3000;
             this.createTimer.Tick += new System.EventHandler(this.createTimer_Tick);
             // 
             // conveyorTimer
             // 
+            this.conveyorTimer.Enabled = true;
             this.conveyorTimer.Interval = 10;
             this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 129);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(193, 42);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Car";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(234, 129);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(193, 42);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Ball";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lblNext
+            // 
+            this.lblNext.AutoSize = true;
+            this.lblNext.Location = new System.Drawing.Point(451, 129);
+            this.lblNext.Name = "lblNext";
+            this.lblNext.Size = new System.Drawing.Size(89, 17);
+            this.lblNext.TabIndex = 2;
+            this.lblNext.Text = "Coming next:";
+            // 
+            // btnColor
+            // 
+            this.btnColor.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnColor.Location = new System.Drawing.Point(237, 177);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(190, 34);
+            this.btnColor.TabIndex = 3;
+            this.btnColor.Text = "button3";
+            this.btnColor.UseVisualStyleBackColor = false;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // Form1
             // 
@@ -63,6 +114,8 @@ namespace IrfHét8
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -72,6 +125,10 @@ namespace IrfHét8
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Timer createTimer;
         private System.Windows.Forms.Timer conveyorTimer;
+        private System.Windows.Forms.Label lblNext;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnColor;
     }
 }
 
