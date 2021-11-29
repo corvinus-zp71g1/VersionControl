@@ -9,7 +9,7 @@ namespace IrfHét11.Entities
     public class BirthProbability
     {
         public int Kor { get; set; }
-        public int GyerekSzam { get; set; }
+        public int NbrOfChildren { get; set; }
         public double P { get; set; }
     }
 }
