@@ -24,17 +24,19 @@ namespace IrfHét11
         {
             InitializeComponent();
 
-            Population = GetPopulation(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
+        }
 
-            // Végigmegyünk a vizsgált éveken
-            for (int year = 2005; year <= 2024; year++)
+        private void SimulaciToltes(int endYear, string csvPath)
+        {
+            Population = GetPopulation(csvPath);
+
+            for (int year = 2005; year <= endYear; year++)
             {
-                // Végigmegyünk az összes személyen
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    SimStep(year,person);
+                    SimStep(year, Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -43,8 +45,9 @@ namespace IrfHét11
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
+
                 Console.WriteLine(
-                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+                        string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
             }
         }
 
@@ -148,5 +151,22 @@ namespace IrfHét11
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SimulaciToltes((int)numericUpDown1.Value, textBox1.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.FileName = textBox1.Text;
+
+            if (ofd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            textBox1.Text = ofd.FileName;
+        }
     }
 }
